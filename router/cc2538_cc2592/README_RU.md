@@ -13,7 +13,9 @@
     * NWK_MAX_DEVICE_LIST = 40;
 
 
+## Базовая версия 
 
+*\Z-Stack 3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2538\
 
 ## Индикация 
 
