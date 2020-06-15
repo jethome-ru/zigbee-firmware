@@ -1,7 +1,7 @@
 NXP Routers
 =============================
 
-1. jethome_double_relay_v2.bin
+##jethome_double_relay_v2.bin
 
 Устройство содержит 4 end point:
 
