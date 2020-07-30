@@ -1,21 +1,27 @@
-## [Link to patch](https://github.com/Koenkk/Z-Stack-firmware/blob/master/coordinator/Z-Stack_3.0.x/firmware_CC2538_CC2592_MODKAMRU_V3.patch)
 
-## MODKAMRU_V3_UART_80.hex(.bin)
-`Z-Stack 3.0.2 + firmware_CC2538_CC2592_MODKAMRU_V3.patch`
--DNWK_MAX_DEVICE_LIST=**80**//100 
-```
-UART no FC:
- - xHAL_UART_USB
- - HAL_UART=TRUE
- - ZNP_ALT
-```
-
-## MODKAMRU_V3_USB_100.hex
-`Z-Stack 3.0.2 + firmware_CC2538_CC2592_MODKAMRU_V3.patch`
--DNWK_MAX_DEVICE_LIST=**100** (value from patch)
-
-## MODKAMRU_V3_USB_80.hex
-`Z-Stack 3.0.2 + firmware_CC2538_CC2592_MODKAMRU_V3.patch`
--DNWK_MAX_DEVICE_LIST=**80**//100 
+## Version 20200729
+* Изменен интерфейс связи с USB на UART;
+* Включена перепрошивка через SBL. Вход по низкому уровню на PA7; 
 
 
+## Version 20200427
+* Изменено значение `NWK_MAX_DEVICE_LIST=80`;
+
+## MODKAMRU_V3
+Прошивки и патч MODKAM. [Взято отсюда](https://github.com/reverieline/CC2538-CC2592-ZNP);
+
+### Отличия MODKAM V3 от оригинальной версии ZNP (Z-Stack 3.0.2):
+
+* Добавлено 4 светодиода для индикации режима работы;
+* Увеличена область NV_RAM c 6 до 12 страниц;
+* Добавлена поддержка Front End CC2592;
+* Сигнал RTS переназначен с PD3 на PD1;
+* Изменено значение Product ID (MT_VERSION) с 0 на 2;
+* Изменено значение `CODE_REVISION_NUMBER` на 20200327;
+* Добавлена возможность получать сообщения с Group ID отсутствующем в таблице координатора;
+* Сообщения для 10 и 11 конечных точек перенаправляются на конечную точку 1;
+* Отключено старение детей;
+* Размер таблицы Broadcast изменен с 9 на 12;
+* Размер UART буферов RX и TX увеличен с 170 байт до 1024 байт;
+* Добавлена обработка событий `HAL_UART_RX_FULL`, `HAL_UART_RX_ABOUT_FULL`, `HAL_UART_RX_TIMEOUT`;
+* Выходная мощность передатчика изменена с 19 на 22 dBm;
