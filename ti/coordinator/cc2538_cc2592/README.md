@@ -9,6 +9,17 @@
 * JetHome ZB3CX module for JetHub based on  [CC2538-CC2592EM](https://www.ti.com/tool/CC2538-CC2592EM-RD) reference. **Use UART firmware version for it.**
 * USB stick MODKAM_V3 [device information](https://modkam.ru/?p=1112). **Use USB firmware version for it.**
 
+
+## Flashing with UART (SBL)
+
+##### UART flash software:
+
+* [cc2538-prog](https://github.com/1248/cc2538-prog)
+* [cc2538-bsl](https://github.com/JelmerT/cc2538-bsl) (works on Linux, MacOS)
+* [FLASH-PROGRAMMER-2](https://www.ti.com/tool/download/FLASH-PROGRAMMER-2) (Windows)
+
+UART(SBL) firmware update mode is desribed [here](https://mysku.ru/blog/aliexpress/79984.html).
+
 ## Changelog:
 
 ### Firmware version 20201010
@@ -24,13 +35,6 @@
 * Enabled Serial Bootloader (SBL). Use low logic level on `PA7` input to enter SBL
 * Added `UART` mode firmware
 * `CODE_REVISION_NUMBER` changed to `20200729`
-
-UART(SBL) firmware update mode is desribed [here](https://mysku.ru/blog/aliexpress/79984.html).
-
-UART flash programs:
-* [cc2538-prog](https://github.com/1248/cc2538-prog)
-* [cc2538-bsl](https://github.com/JelmerT/cc2538-bsl) (works on Linux, MacOS)
-* [FLASH-PROGRAMMER-2](https://www.ti.com/tool/download/FLASH-PROGRAMMER-2) (Windows)
 
 ## Firmware version 20200427
 
