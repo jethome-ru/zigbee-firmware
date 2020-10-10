@@ -1,76 +1,64 @@
-# Прошивки для ZigBee модулей на основе SoC TI CC2538
+# Firmware for TI CC2538 based devices
 
-## Общая информация
+## Common information
 
-* SBL (прошивка по UART) включен во всех прошивках. Патчи для SBL применять не нужно.
+* SBL (UART flashing) is enabled by default. No need to apply extra patches.
 
-## Поддерживаемые устройства
+## Supported devices
 
-### ZigBee модуль JetHome ZB3CX
+* JetHome ZB3CX module for JetHub based on  [CC2538-CC2592EM](https://www.ti.com/tool/CC2538-CC2592EM-RD) reference. **Use UART firmware version for it.**
+* USB stick MODKAM_V3 [device information](https://modkam.ru/?p=1112). **Use USB firmware version for it.**
 
-Модуль основан на референс дизайне TI [CC2538-CC2592EM](https://www.ti.com/tool/CC2538-CC2592EM-RD)
+## Changelog:
 
-**Для  модуля нужно прошивать UART версию прошивки!!!**
+### Firmware version 20201010
 
-### USB стик MODKAM_V3
+* NV flash incremented from 12 pages to  24 pages. (`HAL_NV_PAGE_CNT`)
+* Changed FLASH and NV memory boundaries
+* Work with devices which are not support APS encryption (`zgApsAllowR19Sec = TRUE`)
+* Didabled TCLK (`requestNewTrustCenterLinkKey = FALSE`)
+* `CODE_REVISION_NUMBER` changed to `20201010`
 
-[Описание устройства](https://modkam.ru/?p=1112)
+### Firmware version 20200729
 
-Стик основан на готовых модулях CC2538 SZ12 китайского производства, которые также используют референс дизайн TI [CC2538-CC2592EM](https://www.ti.com/tool/CC2538-CC2592EM-RD)
+* Enabled Serial Bootloader (SBL). Use low logic level on `PA7` input to enter SBL
+* Added `UART` mode firmware
+* `CODE_REVISION_NUMBER` changed to `20200729`
 
-**Для стика нужно прошивать USB версию прошивки!!!**
+UART(SBL) firmware update mode is desribed [here](https://mysku.ru/blog/aliexpress/79984.html).
 
-## Прошивка JetHome версия 20201010
-
-Отличия от версии 20200729
-* Увеличена NV память с 12 страниц до 24. параметр HAL_NV_PAGE_CNT;
-* Изменены границы FLASH и NV памяти; 
-* Включена работа с устройствами не поддерживающих шифрование APS. zgApsAllowR19Sec = TRUE;
-* Отключена процедура обмена TCLK. requestNewTrustCenterLinkKey = FALSE;
-* Изменено значение версии прошивки (параметр `CODE_REVISION_NUMBER`) на 20201010.
-
-## Прошивка JetHome версия 20200729
-
-Отличия от версии 20200427
-* Включена возможность перепрошивки по UART с помощью Serial Bootloader (SBL). Вход в режим загрузчика осуществляется по низкому логическому уровню на выводе PA7; 
-* Добавлен вариант прошивки с интерфейсом связи по UART;
-* Изменено значение версии прошивки (параметр `CODE_REVISION_NUMBER`) на 20200729.
-
-Процесс прошивки по UART хорошо описан в данной [статье](https://mysku.ru/blog/aliexpress/79984.html).
-
-Для прошивки по UART в Linux можно использовать программы:
+UART flash programs:
 * [cc2538-prog](https://github.com/1248/cc2538-prog)
-* [cc2538-bsl](https://github.com/JelmerT/cc2538-bsl)
+* [cc2538-bsl](https://github.com/JelmerT/cc2538-bsl) (works on Linux, MacOS)
+* [FLASH-PROGRAMMER-2](https://www.ti.com/tool/download/FLASH-PROGRAMMER-2) (Windows)
 
-Для прошивки по UART в Windows можно использовать программу:
-* [FLASH-PROGRAMMER-2](https://www.ti.com/tool/download/FLASH-PROGRAMMER-2)
+## Firmware version 20200427
 
-## Прошивка JetHome версия 20200427
+Based on MODKAM_V3 firmware. 
+Differences from MODKAM_V3:
+* Decremented number of direct children from 100 to 80: (`NWK_MAX_DEVICE_LIST=80`)
+* `CODE_REVISION_NUMBER` changed to `20200427`
 
-Основана на прошивке MODKAM_V3. Отличия от оригинальной прошивки MODKAM_V3:
-* Уменьшено максимальное количество устройств подключаемых к координатору напрямую со 100 до 80: `NWK_MAX_DEVICE_LIST=80`;
-* Изменено значение версии прошивки (параметр `CODE_REVISION_NUMBER`) на 20200427.
+## Firmware version 20200327
 
-## Прошивка MODKAMRU_V3 версия от 20200327
+[Original firmware MODKAM_V3](https://github.com/reverieline/CC2538-CC2592-ZNP)
 
-[Оригинальные прошивки и патч для стика MODKAM_V3](https://github.com/reverieline/CC2538-CC2592-ZNP)
+### MODKAM V3 differences form the original TI ZNP (Z-Stack 3.0.2)
 
-### Отличия MODKAM V3 от оригинальной версии TI ZNP (Z-Stack 3.0.2)
-
-* Добавлено 4 светодиода для индикации режима работы;
-* Увеличена область NV_RAM c 6 до 12 страниц;
-* Добавлена поддержка frontend чипа CC2592;
-* Сигнал UART RTS переназначен с вывода PD3 на PD1;
-* В версии протокола связи ZNP (MT_VERSION) изменено значение Product ID с 0 на 2;
-* Изменено значение версии прошивки (параметр `CODE_REVISION_NUMBER`) на 20200327;
-* Добавлена возможность получать сообщения с Group ID отсутствующем в таблице координатора;
-* Сообщения для 10 и 11 конечных точек перенаправляются на конечную точку 1;
-* Отключено старение детей;
-* Размер таблицы Broadcast изменен с 9 на 12 (параметр `MAX_BCAST=12`);
-* Размер UART буферов RX и TX увеличен с 170 байт до 1024 байт;
-* Добавлена обработка событий `HAL_UART_RX_FULL`, `HAL_UART_RX_ABOUT_FULL`, `HAL_UART_RX_TIMEOUT`;
-* Выходная мощность передатчика изменена с 19 на 22 dBm;
-* Изменен(добавлен) ряд параметров:
+* Added 4 LEDs
+* NV_RAM area changed form 6 to 12 pages
+* Added frontend CC2592
+* UART RTS signal changed from `PD3` to `PD1`
+* ZNP (`MT_VERSION`) oroduct ID changed from `0` to `2`
+* Added possiblity to receive messages when `Group ID` is missing in the coordinator
+* Messages for `10` and `11` endpoints are forwared to endpoint `1`
+* Disable children aging
+* Broadcast table size changed fron `9` to `12` (`MAX_BCAST=12`)
+* UART buffer size changed form `170` to `1024` bytes
+* Handling `HAL_UART_RX_FULL`, `HAL_UART_RX_ABOUT_FULL`, `HAL_UART_RX_TIMEOUT` events
+* Output power changed from `19` to `22` dBm
+* `CODE_REVISION_NUMBER` changed to `20200327`
+* Added new parameters:
 ```
 -DMODKAMRU_V3
 -DINCLUDE_REVISION_INFORMATION
