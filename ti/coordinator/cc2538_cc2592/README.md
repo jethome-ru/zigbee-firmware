@@ -25,6 +25,9 @@
 * [cc2538-prog](https://github.com/1248/cc2538-prog)
 * [cc2538-bsl](https://github.com/JelmerT/cc2538-bsl)
 
+Для прошивки по UART в Windows можно использовать программу:
+* [FLASH-PROGRAMMER-2](https://www.ti.com/tool/download/FLASH-PROGRAMMER-2)
+
 ## Прошивка JetHome версия 20200427
 
 Основана на прошивке MODKAM_V3. Отличия от оригинальной прошивки MODKAM_V3:
