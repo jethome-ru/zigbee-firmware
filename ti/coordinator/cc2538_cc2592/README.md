@@ -24,11 +24,13 @@ UART(SBL) firmware update mode is desribed [here](https://mysku.ru/blog/aliexpre
 
 ### Firmware version 20201010
 
+* FIX https://github.com/jethome-ru/zigbee-firmware/issues/2
 * NV flash incremented from 12 pages to  24 pages. (`HAL_NV_PAGE_CNT`)
-* Changed FLASH and NV memory boundaries
 * Work with devices which are not support APS encryption (`zgApsAllowR19Sec = TRUE`)
-* Didabled TCLK (`requestNewTrustCenterLinkKey = FALSE`)
+* Changed FLASH and NV memory boundaries
+* Disabled TCLK (`requestNewTrustCenterLinkKey = FALSE`)
 * `CODE_REVISION_NUMBER` changed to `20201010`
+
 
 ### Firmware version 20200729
 
