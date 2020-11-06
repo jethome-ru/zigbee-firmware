@@ -2,15 +2,25 @@
 
 ## Common information
 
-* SBL (UART flashing) is enabled by default. No need to apply extra patches.
+* SBL (UART flashing) is enabled by default in this firmware. No need to apply extra patches.
 
 ## Supported devices
 
 * JetHome ZB3CX module for JetHub based on  [CC2538-CC2592EM](https://www.ti.com/tool/CC2538-CC2592EM-RD) reference. **Use UART firmware version for it.**
 * USB stick MODKAM_V3 [device information](https://modkam.ru/?p=1112). **Use USB firmware version for it.**
 
+## Zigbee2Mqtt
+
+If you don't want to repair all device after re-flashing stick please follow next steps:
+
+* Stop zigbee2mqtt
+* Make backup of the `data` folder. (you can restore this backup if something will be wrong)
+* Flash firmware to stick (remove it if you want to flash with J-Link)
+* Start zigbee2mqtt
 
 ## Flashing with UART (SBL)
+
+* Make sure that your current firmware has SBL enabled.
 
 ##### UART flash software:
 
@@ -38,14 +48,14 @@ UART(SBL) firmware update mode is desribed [here](https://mysku.ru/blog/aliexpre
 * Added `UART` mode firmware
 * `CODE_REVISION_NUMBER` changed to `20200729`
 
-## Firmware version 20200427
+### Firmware version 20200427
 
 Based on MODKAM_V3 firmware. 
 Differences from MODKAM_V3:
 * Decremented number of direct children from 100 to 80: (`NWK_MAX_DEVICE_LIST=80`)
 * `CODE_REVISION_NUMBER` changed to `20200427`
 
-## Firmware version 20200327
+### Firmware version 20200327
 
 [Original firmware MODKAM_V3](https://github.com/reverieline/CC2538-CC2592-ZNP)
 
