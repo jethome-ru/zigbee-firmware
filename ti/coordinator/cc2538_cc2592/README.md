@@ -33,10 +33,10 @@ UART(SBL) firmware update mode is desribed [here](https://mysku.ru/blog/aliexpre
 ## LEDs
 
 All 4 LEDS will be turned on for 1-2 sec during boot (Test all LEDs)
-* HAL_LED_1 - Power LED 
-* HAL_LED_4 - Application level activity. (traffic in radio sensors, etc)
-* HAL_LED_3 - Allow join (permit_join: true). 
-* HAL_LED_2 - Not used
+* LED_1 - Power LED 
+* LED_2 - Not used
+* LED_3 - Allow join (permit_join: true). 
+* LED_4 - Application level activity. (traffic in radio sensors, etc)
 
 ## Changelog:
 
