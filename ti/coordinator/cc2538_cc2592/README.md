@@ -30,6 +30,14 @@ If you don't want to repair all device after re-flashing stick please follow nex
 
 UART(SBL) firmware update mode is desribed [here](https://mysku.ru/blog/aliexpress/79984.html).
 
+## LEDs
+
+All 4 LEDS will be turned on for 1-2 sec during boot (Test all LEDs)
+* HAL_LED_1 - Power LED 
+* HAL_LED_4 - Application level activity. (traffic in radio sensors, etc)
+* HAL_LED_3 - Allow join (permit_join: true). 
+* HAL_LED_2 - Not used
+
 ## Changelog:
 
 ### Firmware version 20201010
