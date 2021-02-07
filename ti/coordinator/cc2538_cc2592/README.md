@@ -18,6 +18,8 @@ If you don't want to repair all device after re-flashing stick please follow nex
 * Flash firmware to stick (remove it if you want to flash with J-Link)
 * Start zigbee2mqtt
 
+**NOTE: New stick should have fresh NVMEM.** You can use next script to erase it: [zStackEraseAllNvMem.js](https://github.com/Koenkk/zigbee2mqtt/blob/master/scripts/zStackEraseAllNvMem.js)
+
 ## Flashing with UART (SBL)
 
 * Make sure that your current firmware has SBL enabled.
