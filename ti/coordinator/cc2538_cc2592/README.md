@@ -18,6 +18,8 @@ If you don't want to repair all device after re-flashing stick please follow nex
 * Flash firmware to stick (remove it if you want to flash with J-Link)
 * Start zigbee2mqtt
 
+**NOTE: New stick should have fresh NVMEM.** You can use next script to erase it: [zStackEraseAllNvMem.js](https://github.com/Koenkk/zigbee2mqtt/blob/master/scripts/zStackEraseAllNvMem.js)
+
 ## Flashing with UART (SBL)
 
 * Make sure that your current firmware has SBL enabled.
@@ -29,6 +31,14 @@ If you don't want to repair all device after re-flashing stick please follow nex
 * [FLASH-PROGRAMMER-2](https://www.ti.com/tool/download/FLASH-PROGRAMMER-2) (Windows)
 
 UART(SBL) firmware update mode is desribed [here](https://mysku.ru/blog/aliexpress/79984.html).
+
+## LEDs
+
+All 4 LEDS will be turned on for 1-2 sec during boot (Test all LEDs)
+* LED_1 - Power LED 
+* LED_2 - Not used
+* LED_3 - Allow join (permit_join: true). 
+* LED_4 - Application level activity. (traffic in radio sensors, etc)
 
 ## Changelog:
 
