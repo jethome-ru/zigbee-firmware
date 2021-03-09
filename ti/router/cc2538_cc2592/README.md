@@ -12,6 +12,12 @@ Firmware for stick MODKAM СС2538 (with the FLASH button and without the FLASH 
     * Added function to reset the device to factory settings by quickly pressing the RESET button 5 times. Pressing is considered fast if made before the LED1 is turned on;
     * NWK_MAX_DEVICE_LIST = 40;
 
+### jh_2538_router_20210115.hex
+		* NWK_LINK_STATUS_PERIOD = 15 sec;
+		* Model Identifier - cc2538.router.v2;
+		* Date Code - 20210115;
+		* Added measurement and reporting of temperature from the internal sensor. Cluster Device Temperature Configuration (0x0002), CurrentTemperature attribute (0x0000). Reportin every 1 second;
+
 
 ## Basic version
 
@@ -55,14 +61,42 @@ Input Cluster List
     
         Attribute: Model Identifier (0x0005)
         Data Type: Character String (0x42)
-        String: cc2538.router.v1
+        String: cc2538.router.v1    //(v2)
    
         Attribute: Date Code (0x0006)
         Data Type: Character String (0x42)
         String: 20200520 
 
-    Input Cluster: Identify (0x0003)
+    Input Cluster: Identify (0x0003)    
+    Input Cluster: Device Temperature Configuration (0x0002) (only v2)
+        Attribute: CurrentTemperature (0x0000)
+        Data Type: 16-Bit Unsigned Integer (0x29)
+        Uint16: temperature from internal sensor
 Output Cluster Count: 1
 Output Cluster List
     Output Cluster: Basic (0x0000)
+```
+
+## zigbee-herdsman-converters/devices.js
+```
+    //hethome
+    {
+        zigbeeModel: ['cc2538.router.v1'],
+        model: 'cc2538.router.v1',
+        vendor: 'jethome',
+        description: 'zigbee router cc2538',
+        fromZigbee: [],
+        toZigbee: [tz.genIdentify],
+        exposes: [],
+    },
+
+    {
+        zigbeeModel: ['cc2538.router.v2'],
+        model: 'cc2538.router.v2',
+        vendor: 'jethome',
+        description: 'zigbee router cc2538 with temperature sensor',
+        fromZigbee: [fz.device_temperature],
+        toZigbee: [tz.genIdentify],
+        exposes: [e.temperature()],
+    },
 ```
