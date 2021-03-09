@@ -2,21 +2,21 @@ Firmware for stick MODKAM СС2538 (with the FLASH button and without the FLASH 
 
 ## Changelog
 ### jh_2538_router_20200520.hex
-    * Fixed bug with Identify cluster;
-    * Allowed Bootloader. Low on PA7;
-    * Disabled constant light LED4;
-    * NWK_MAX_DEVICE_LIST = 100;
+ * Fixed bug with Identify cluster;
+ * Allowed Bootloader. Low on PA7;
+ * Disabled constant light LED4;
+ * NWK_MAX_DEVICE_LIST = 100;
 
 ### jh_2538_router_20200522.hex
-    * Fixed a problem with switching to bootloader mode after holding the FLASH button (PA7) for a long time.
-    * Added function to reset the device to factory settings by quickly pressing the RESET button 5 times. Pressing is considered fast if made before the LED1 is turned on;
-    * NWK_MAX_DEVICE_LIST = 40;
+ * Fixed a problem with switching to bootloader mode after holding the FLASH button (PA7) for a long time.
+ * Added function to reset the device to factory settings by quickly pressing the RESET button 5 times. Pressing is considered fast if made before the LED1 is turned on;
+ * NWK_MAX_DEVICE_LIST = 40;
 
 ### jh_2538_router_20210115.hex
-		* NWK_LINK_STATUS_PERIOD = 15 sec;
-		* Model Identifier - cc2538.router.v2;
-		* Date Code - 20210115;
-		* Added measurement and reporting of temperature from the internal sensor. Cluster Device Temperature Configuration (0x0002), CurrentTemperature attribute (0x0000). Reportin every 1 second;
+ * NWK_LINK_STATUS_PERIOD = 15 sec;
+ * Model Identifier - cc2538.router.v2;
+ * Date Code - 20210115;
+ * Added measurement and reporting of temperature from the internal sensor. Cluster Device Temperature Configuration (0x0002), CurrentTemperature attribute (0x0000). Reportin every 1 second;
 
 
 ## Basic version
