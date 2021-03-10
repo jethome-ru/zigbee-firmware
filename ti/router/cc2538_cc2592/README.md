@@ -18,6 +18,10 @@ Firmware for stick MODKAM СС2538 (with the FLASH button and without the FLASH 
  * Date Code - 20210115;
  * Added measurement and reporting of temperature from the internal sensor. Cluster Device Temperature Configuration (0x0002), CurrentTemperature attribute (0x0000). Reportin every 1 second;
 
+### jh_2538_router_20210310.hex
+ * The temperature report period changes from 1 second to 15 seconds;
+ * Date Code - 20210310;
+ 
 
 ## Basic version
 
@@ -77,26 +81,22 @@ Output Cluster List
     Output Cluster: Basic (0x0000)
 ```
 
-## zigbee-herdsman-converters/devices.js
+## z2m converter 
 ```
-    //hethome
-    {
-        zigbeeModel: ['cc2538.router.v1'],
-        model: 'cc2538.router.v1',
-        vendor: 'jethome',
-        description: 'zigbee router cc2538',
-        fromZigbee: [],
-        toZigbee: [tz.genIdentify],
-        exposes: [],
-    },
+const fz = require('zigbee-herdsman-converters/converters/fromZigbee');
+const tz = require('zigbee-herdsman-converters/converters/toZigbee');
+const exposes = require('zigbee-herdsman-converters/lib/exposes');
+const e = exposes.presets;
 
-    {
-        zigbeeModel: ['cc2538.router.v2'],
-        model: 'cc2538.router.v2',
-        vendor: 'jethome',
-        description: 'zigbee router cc2538 with temperature sensor',
-        fromZigbee: [fz.device_temperature],
-        toZigbee: [tz.genIdentify],
-        exposes: [e.temperature()],
-    },
+const device = {
+    zigbeeModel: ['cc2538.router.v2'],
+    model: 'cc2538.router.v2',
+    vendor: 'jethome',
+    description: 'zigbee router cc2538 with temperature sensor',
+    fromZigbee: [fz.ignore_basic_report, fz.device_temperature],
+    toZigbee: [],
+    exposes: [e.device_temperature(), e.linkquality()],
+};
+
+module.exports = device;
 ```
