@@ -20,6 +20,15 @@ If you don't want to repair all device after re-flashing stick please follow nex
 
 **NOTE: New stick should have fresh NVMEM.** You can use next script to erase it: [zStackEraseAllNvMem.js](https://github.com/Koenkk/zigbee2mqtt/blob/master/scripts/zStackEraseAllNvMem.js)
 
+## UART connection settings
+```
+115200 8n1, No flow control
+PA0 - RX
+PA1 - TX
+PB0 - CTS (no used)
+PD1 - RTS (no used)
+```
+
 ## Flashing with UART (SBL)
 
 * Make sure that your current firmware has SBL enabled.
