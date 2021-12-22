@@ -1,5 +1,5 @@
 # zigbee_firmware
-Firmware for devices based on TI and NXP chips.
+Firmware for devices based on TI, Silabs and NXP chips.
 
 ### Folder structure
 |||
