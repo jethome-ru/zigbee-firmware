@@ -51,6 +51,12 @@ All 4 LEDS will be turned on for 1-2 sec during boot (Test all LEDs)
 
 ## Changelog:
 
+### Firmware version 20211222
+
+* Fixed work with devices Aqara E1;
+* Added GREEN POWER cluster;
+* `CODE_REVISION_NUMBER` changed to `20211222`
+
 ### Firmware version 20201010
 
 * FIX https://github.com/jethome-ru/zigbee-firmware/issues/2
