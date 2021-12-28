@@ -6,11 +6,13 @@
 
 "z4-ncp-uart-sw-*" - Zigbee coordinator firmware files uses Silicon Labs Zigbee stack from their EmberZNet SDK.
 
+Firmware file with "sw" uses software XON/XOFF flow control.
+Baud rate specified in filename and can be 57600 or 115200. Default baud rate is 115200 if not specified in filename.
 
 ## Hardware
- * Baud rate - 115200;
+
+JetStick Z4 uses following pins of the microcontroller:
  * USART TX Pin - PA05;
  * USART RX PIN - PA06;
- * Xon-Xoff;
  * LED0 - PD02;
- * LED1 - PD03;
+ * LED1 - PD03.
