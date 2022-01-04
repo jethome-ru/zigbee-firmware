@@ -48,6 +48,12 @@ All 4 LEDS will be turned on for 1-2 sec during boot (Test all LEDs)
 * LED_2 - Not used
 * LED_3 - Allow join (permit_join: true). 
 * LED_4 - Application level activity. (traffic in radio sensors, etc)
+* 
+## Compiling
+1. Install 'IAR for ARM' Version 8.50.1;
+2. Install [Z-Stack 3.0.2](https://www.ti.com/tool/Z-STACK); 
+3. Go to directory `Z-Stack 3.0.2` and apply the patch;
+4. Build project;
 
 ## Changelog:
 
