@@ -1,20 +1,39 @@
-# WS7
+# Прошивки для трехканального модуля дискретных входов WS7
+
+Описание устройства: https://jethome.ru/wiki/jethome-ws7-trehkanalnyy-modul-diskretnyh-vhodov-zigbee/
+
+## Структура репозитария
+
+  * client - директория с прошивками, поставляемых с устройством;
+  * ota - прошивки, подготовленные для обновления устройства с помощью механизма OTA.
+
+## Версии прошивок
+  
+  * ws7_20210922_f123_f001_00000008 - базовая прошивка
+  * ws7_20220630_f123_f001_00000009 - добавлен прямой биндинг устройства.
+
+## Инструкция по обновлению устройства с помощью механизма OTA
+
+Устройства JetHome WS7 поддерживают механизм обновления OTA, однако в текущей стабильной версии Zigbee2MQTT (1.25.2) данный механизм не включен для устройств WS7. Ниже приводится инструкция по обновлению устройства. Механизм проверен на следующей конфигурации:
+
 Zigbee2MQTT version: 1.25.2  
 Coordinator type: zStack3x0  
 Coordinator revision: 20220524  
-Frontend version: 0.6.103  
+Frontend version: 0.6.103
 
-1. Отредактировать файл `/zigbee2mqtt/node_modules/zigbee-herdsman-converters/devices/jethome.js` (https://github.com/Koenkk/zigbee-herdsman-converters/blob/master/devices/jethome.js)
+1. В директории, где установлен Zigbee2MQTT отредактирйте файл `zigbee2mqtt/node_modules/zigbee-herdsman-converters/devices/jethome.js` (https://github.com/Koenkk/zigbee-herdsman-converters/blob/master/devices/jethome.js):
 
-    * В строку 6 добавить: `const ota = require('../lib/ota');`
+    * В строку 6 необходимо добавить: `const ota = require('../lib/ota');`
     * В строку 30 добавить: `ota: ota.zigbeeOTA,`
 
-2. Перезапустить zigbee2mqtt
+2. Перезапустите zigbee2mqtt.
 
-3. Открыть WEB-интерфейс zigbee2mqtt. Перейти в раздел: `Settings/OTA updates/` 
-  В поле `OTA index override file name` указать: `https://github.com/jethome-ru/zigbee-firmware/raw/master/ti/ws7/jethome_ota_index.json`  
-  Нажать ***'Submit'***.
+3. Откройте WEB-интерфейс zigbee2mqtt и перейдите в раздел: `Settings/OTA updates/` 
+  В поле `OTA index override file name` укажите ссылку на новый файл с описанием OTA прошивок для устройств JetHome: `https://github.com/jethome-ru/zigbee-firmware/raw/master/ti/ws7/jethome_ota_index.json`  
+  Нажмите ***'Submit'***.
 
-4. Перейти в раздел `OTA`. Нажать кнопку ***'Check for new update'*** напротив WS7. На WS7 нажать кнопку переключения режимов. Подождать появления кнопки ***'Update device firmware'***. Нажать на нее. 
+4. Перейдите в раздел `OTA`. Нажмите кнопку ***'Check for new update'*** напротив WS7. На обновляемом устройстве WS7 нажать кнопку переключения режимов (кнопка на корпусе устройства). Подождите появления кнопки ***'Update device firmware'*** в WEB-интерфейсе Zigbee2MQTT. Нажмите на нее. 
 
-5. На WS7 с периодом ~2 сек нажать 3-4 раза на кнопку переключения режимов. Начнется процесс обновления. Время обновления около 80 минут. 
+5. Так как устройство WS7 большую часть времени аходится в спящем режиме, то на нем необходимо с периодом ~2 сек нажать 3-4 раза на кнопку переключения режимов. Начнется процесс обновления. Время обновления около 80 минут. 
+
+После обновления устройства его нужно переподключить к координатору, так как в новой прошивке были добавлены новые кластеры для обеспечения работы прямого биндинга устройства.
