@@ -21,10 +21,12 @@ Coordinator type: zStack3x0
 Coordinator revision: 20220524  
 Frontend version: 0.6.103
 
-1. В директории, в которую установлен Zigbee2MQTT отредактирйте файл `zigbee2mqtt/node_modules/zigbee-herdsman-converters/devices/jethome.js` (https://github.com/Koenkk/zigbee-herdsman-converters/blob/master/devices/jethome.js):
+1. В директории, в которую установлен Zigbee2MQTT отредактируйте файл `zigbee2mqtt/node_modules/zigbee-herdsman-converters/devices/jethome.js` (https://github.com/Koenkk/zigbee-herdsman-converters/blob/master/devices/jethome.js):
 
     * В строку 6 необходимо добавить: `const ota = require('../lib/ota');`
     * В строку 30 добавить: `ota: ota.zigbeeOTA,`
+   
+   В файл [jethome.js](https://github.com/jethome-ru/zigbee-firmware/blob/master/ti/ws7/jethome.js), расположенный в корне проекта WS7, внесены необходимые исправления. 
 
 2. Перезапустите службу zigbee2mqtt.
 
