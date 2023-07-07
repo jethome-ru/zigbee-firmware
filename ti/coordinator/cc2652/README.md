@@ -1,3 +1,14 @@
+## CC1352P2_CC2652P_launchpad_coordinator_20230707
+### Compile
+[Basic version 20230507](https://github.com/Koenkk/Z-Stack-firmware/tree/develop/coordinator/Z-Stack_3.x.0/)  
+1. Build firmware for CC1352P2_CC2652P_launchpad_coordinator_20230507 (znp_CC1352P_2_LAUNCHXL_tirtos7_ticlang) according to [instructions](https://github.com/Koenkk/Z-Stack-firmware/blob/develop/coordinator/Z-Stack_3.x.0/COMPILE.md); 
+2. Go to your in the folder where the SDK is installed (see point 1 of Koenkk [manual](https://github.com/Koenkk/Z-Stack-firmware/blob/develop/coordinator/Z-Stack_3.x.0/COMPILE.md#compiling)) and apply patch:  
+`git apply firmware_20230707.patch --ignore-space-change`
+4. Build a project;
+
+### Changelog
+ * Changes for version 20230507 https://github.com/Koenkk/Z-Stack-firmware/blob/develop/coordinator/Z-Stack_3.x.0/CHANGELOG.md;
+
 ## CC1352P2_CC2652P_launchpad_coordinator_20220524
 ### Compile
 [Basic version 20220219](https://github.com/Koenkk/Z-Stack-firmware/tree/develop/coordinator/Z-Stack_3.x.0/)  
