@@ -1,4 +1,4 @@
-# Firmare for Zigbee devices
+# Firmware for Zigbee devices
 
 Firmware for devices based on TI, Silabs and NXP chips.
 
