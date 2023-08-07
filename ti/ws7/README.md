@@ -17,15 +17,15 @@
 
 Устройства JetHome WS7 поддерживают механизм обновления OTA, однако в текущей стабильной версии Zigbee2MQTT (1.25.2) данный механизм не включен для устройств JetHome WS7. Ниже приводится инструкция по обновлению устройства JetHome WS7 с спользованием механизма OTA. Механизм проверен на следующей конфигурации:
 
-Zigbee2MQTT version: 1.25.2  
+Zigbee2MQTT version: 1.32.1  
 Coordinator type: zStack3x0  
 Coordinator revision: 20220524  
-Frontend version: 0.6.103
+Frontend version: 0.6.129
 
 1. В директории, в которую установлен Zigbee2MQTT отредактируйте файл `zigbee2mqtt/node_modules/zigbee-herdsman-converters/devices/jethome.js` (https://github.com/Koenkk/zigbee-herdsman-converters/blob/master/devices/jethome.js):
 
-    * В строку 6 необходимо добавить: `const ota = require('../lib/ota');`
-    * В строку 30 добавить: `ota: ota.zigbeeOTA,`
+    * Подключить библиотеку OTA: `const ota = require('../lib/ota');`
+    * В описании устройства WS7 включить поддержку OTA: `ota: ota.zigbeeOTA,`
    
    В файл [jethome.js](https://github.com/jethome-ru/zigbee-firmware/blob/master/ti/ws7/jethome.js), расположенный в корне проекта WS7, внесены необходимые исправления. 
 
