@@ -1,6 +1,6 @@
 # Прошивки для трехканального модуля дискретных входов WS7
 
-Описание устройства: https://jethome.ru/wiki/jethome-ws7-trehkanalnyy-modul-diskretnyh-vhodov-zigbee/
+Описание устройства: [Трехканальный Zigbee Модуль дискретных входов JetHome WS7](https://docs.jethome.ru/ru/zigbee/switches/ws7.html)
 
 ## Структура репозитария
 
@@ -15,19 +15,39 @@
   
 ## Инструкция по обновлению устройства с помощью механизма OTA
 
-Устройства JetHome WS7 поддерживают механизм обновления OTA, однако в текущей стабильной версии Zigbee2MQTT (1.25.2) данный механизм не включен для устройств JetHome WS7. Ниже приводится инструкция по обновлению устройства JetHome WS7 с спользованием механизма OTA. Механизм проверен на следующей конфигурации:
+Устройства JetHome WS7 поддерживают механизм обновления OTA, однако в текущей стабильной версии Zigbee2MQTT данный механизм не включен для устройств JetHome WS7. Ниже приводится инструкция по обновлению устройства JetHome WS7 с спользованием механизма OTA. Механизм проверен на следующей конфигурации:
 
 Zigbee2MQTT version: 1.32.1  
 Coordinator type: zStack3x0  
 Coordinator revision: 20220524  
 Frontend version: 0.6.129
 
-1. В директории, в которую установлен Zigbee2MQTT отредактируйте файл `zigbee2mqtt/node_modules/zigbee-herdsman-converters/devices/jethome.js` (https://github.com/Koenkk/zigbee-herdsman-converters/blob/master/devices/jethome.js):
+1. В директории, в которую установлен Zigbee2MQTT, отредактируйте файл `zigbee2mqtt/node_modules/zigbee-herdsman-converters/devices/jethome.js` (https://github.com/Koenkk/zigbee-herdsman-converters/blob/master/devices/jethome.js). В данный файл необходимо добавить две строки:
 
-    * Подключить библиотеку OTA: `const ota = require('../lib/ota');`
-    * В описании устройства WS7 включить поддержку OTA: `ota: ota.zigbeeOTA,`
-   
-   В файл [jethome.js](https://github.com/jethome-ru/zigbee-firmware/blob/master/ti/ws7/jethome.js), расположенный в корне проекта WS7, внесены необходимые исправления. 
+- Подключить библиотеку *OTA*, для чего добавить строку: `const ota = require('../lib/ota');`
+```
+...
+const exposes = require('../lib/exposes');
+const fz = require('../converters/fromZigbee');
+const reporting = require('../lib/reporting');
+const utils = require('../lib/utils');
+const e = exposes.presets;
+const ota = require('../lib/ota');
+...
+```
+
+- В описании устройства WS7 включить поддержку механизма Zigbee OTA для данного устройства, для чего добавить строку: `ota: ota.zigbeeOTA,`
+```
+...
+module.exports = [
+    {
+        fingerprint: [{modelID: 'WS7', manufacturerName: 'JetHome'}],
+        model: 'WS7',
+        vendor: 'JetHome',
+        description: '3-ch battery discrete input module',
+        ota: ota.zigbeeOTA,
+...
+```
 
 2. Перезапустите службу zigbee2mqtt.
 
@@ -37,8 +57,8 @@ Frontend version: 0.6.129
 
 4. Перейдите в раздел `OTA`. Нажмите кнопку ***'Check for new update'*** напротив устройства JetHome WS7. На обновляемом устройстве Jethome WS7 нажмите кнопку переключения режимов (кнопка на корпусе устройства). Подождите появления кнопки ***'Update device firmware'*** в WEB-интерфейсе Zigbee2MQTT. Нажмите на нее. 
 
-5. Так как устройство JetHome WS7 большую часть времени находится в спящем режиме, то на нем необходимо с периодом ~2 сек нажать 3-4 раза на кнопку переключения режимов. Начнется процесс обновления. Время обновления может достигать до 80 минут. 
+5. Так как устройство JetHome WS7 питатся от батарейки и большую часть времени находится в спящем режиме, то на нем необходимо с периодом ~2 сек нажать 3-4 раза на кнопку переключения режимов, чтобы вывести устройство из спящего режима. Начнется процесс обновления. Время обновления может достигать до 60 минут. 
 
-После обновления прошивки устройства до версии ws7_20220630_f123_f001_00000009 его необходимо переподключить к координатору, так как в данной прошивке были добавлены новые кластеры для обеспечения работы прямого биндинга устройства.
+Если производилось обновление прошивки устройства с версии ws7_20220630_f123_f001_00000008 или более ранней, то устройство необходимо заново переподключить к координатору, так как в новых прошивках были добавлены дополнительные кластеры для обеспечения работы прямого биндинга устройства.
 
-Настройка биндинга устройства может быть произведена в Web-интерфейсе (frontend) Zigbee2MQTT. Документация на сайте Zigbee2MQTT^ https://www.zigbee2mqtt.io/guide/usage/binding.html
+Настройка биндинга устройства может быть произведена в Web-интерфейсе (frontend) Zigbee2MQTT. Документация по настройке биндинга на сайте Zigbee2MQTT: https://www.zigbee2mqtt.io/guide/usage/binding.html
