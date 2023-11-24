@@ -1,11 +1,11 @@
 [
     {
-        "fileVersion": 11,
-        "fileSize": 159602,
+        "fileVersion": 12,
+        "fileSize": 159690,
         "manufacturerCode": 61731,
         "imageType": 61441,
-        "sha512": "9a80c16b8b9fac6f1375ad19fa50661edd8dbb5ff6176a43414995cf50fce7b7819d88e6e00ccf416059761dbe921c385028f550fa27c161e4a222a1ba32a1c4",
-        "url": "https://github.com/jethome-ru/zigbee-firmware/raw/master/ti/ws7/ota/ws7_20231017_f123_f001_0000000b.zigbee",
-        "path": "ota/ws7_20231017_f123_f001_0000000b.zigbee"
+        "sha512": "961e556a74198f33e08e9958932e4d883a09de41f60017b06b523c689ead66f6654737b386ae5acde1f1ec9ea17d204442d02f6f9656ba97363564c1a63fd434",
+        "url": "https://github.com/jethome-ru/zigbee-firmware/raw/master/ti/ws7/ota/ws7_20231124_f123_f001_0000000c.zigbee",
+        "path": "ota/ws7_20231124_f123_f001_0000000c.zigbee"
     }
 ]
