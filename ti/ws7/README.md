@@ -16,14 +16,17 @@
   
 ## Инструкция по обновлению устройства с помощью механизма OTA
 
-Устройства JetHome WS7 поддерживают механизм обновления OTA, однако в текущей стабильной версии Zigbee2MQTT данный механизм не включен для устройств JetHome WS7. Ниже приводится инструкция по обновлению устройства JetHome WS7 с спользованием механизма OTA. Механизм проверен на следующей конфигурации:
+Устройства JetHome WS7 поддерживают механизм обновления OTA в Zigbee2MQTT начиная с версии 1.34.0. Для выполнения обновления выполнитие Инструкцию пропустив первые два пункта.
+
+
+Ниже приводится инструкция по обновлению устройства JetHome WS7 с спользованием механизма OTA для версии Z2M ранее 1.34.0. Механизм проверен на следующей конфигурации:
 
 Zigbee2MQTT version: 1.32.1  
 Coordinator type: zStack3x0  
 Coordinator revision: 20220524  
 Frontend version: 0.6.129
 
-1. В директории, в которую установлен Zigbee2MQTT, отредактируйте файл `zigbee2mqtt/node_modules/zigbee-herdsman-converters/devices/jethome.js` (https://github.com/Koenkk/zigbee-herdsman-converters/blob/master/devices/jethome.js). В данный файл необходимо добавить две строки:
+1. (для версии Z2M менее 1.34.0) В директории, в которую установлен Zigbee2MQTT, отредактируйте файл `zigbee2mqtt/node_modules/zigbee-herdsman-converters/devices/jethome.js` (https://github.com/Koenkk/zigbee-herdsman-converters/blob/master/devices/jethome.js). В данный файл необходимо добавить две строки:
 
 - Подключить библиотеку *OTA*, для чего добавить строку: `const ota = require('../lib/ota');`
 ```
@@ -50,7 +53,7 @@ module.exports = [
 ...
 ```
 
-2. Перезапустите службу zigbee2mqtt.
+2. (для версии Z2M менее 1.34.0) Перезапустите службу zigbee2mqtt.
 
 3. Откройте WEB-интерфейс (frontend) Zigbee2MQTT и перейдите в раздел: `Settings/OTA updates` 
   В поле `OTA index override file name` укажите ссылку на новый файл с описанием OTA прошивок для устройств JetHome: `https://github.com/jethome-ru/zigbee-firmware/raw/master/ti/ws7/jethome_ota_index.json`  
