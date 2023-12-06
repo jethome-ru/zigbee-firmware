@@ -58,7 +58,7 @@ module.exports = [
 
 3. Откройте WEB-интерфейс (frontend) Zigbee2MQTT и перейдите в раздел: `Settings/OTA updates` 
   В поле `OTA index override file name` укажите ссылку на новый файл с описанием OTA прошивок для устройств JetHome: `https://github.com/jethome-ru/zigbee-firmware/raw/master/ti/ws7/jethome_ota_index.json`  
-  Нажмите кнопку ***'Submit'***.
+  Нажмите кнопку ***'Submit'***. Перезапустите службу zigbee2mqtt.
 
 4. Перейдите в раздел `OTA`. Нажмите кнопку ***'Check for new update'*** напротив устройства JetHome WS7. На обновляемом устройстве Jethome WS7 нажмите кнопку переключения режимов (кнопка на корпусе устройства). Подождите появления кнопки ***'Update device firmware'*** в WEB-интерфейсе Zigbee2MQTT. Нажмите на нее. 
 
